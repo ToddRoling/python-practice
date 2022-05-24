@@ -1,5 +1,3 @@
-from pytest import *
-
 LARGE_PACKAGE_SIZE = 5
 
 
@@ -31,7 +29,6 @@ def minimal_number_of_packages(item_count, available_large_packages, available_s
 def test_minimal_number_of_packages():
     assert minimal_number_of_packages(109, 5, 100) == 89
     assert minimal_number_of_packages(409, 5, 100) == -1
-    assert minimal_number_of_packages(0, 5, 100) == 0
     assert minimal_number_of_packages(10, 5, 100) == 2
     assert minimal_number_of_packages(10, 5, -100) == -1
     assert minimal_number_of_packages(-10, 5, -100) == -1
