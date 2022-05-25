@@ -53,7 +53,7 @@ def dfs_recursive_character_node_graph(graph):
 def dfs_recursive_index_node_graph(graph):
     """
     expected graph structure:
-    graph = {
+    graph = [
         [1, 3],
         [0, 2, 4],
         [1, 4, 6],
@@ -61,7 +61,7 @@ def dfs_recursive_index_node_graph(graph):
         [1, 2],
         [1, 3],
         [2]
-    }
+    ]
     """
 
     result = []
