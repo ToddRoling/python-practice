@@ -1,5 +1,4 @@
-def depth_first_search_iterative(adjacency_list):
-
+def depth_first_search_iterative(graph):
     result = []
     stack = [0]
     visited_nodes = set()
@@ -20,17 +19,60 @@ def depth_first_search_iterative(adjacency_list):
     return result
 
 
-def depth_first_search_recursive(adjacency_list):
+def dfs_recursive_character_node_graph(graph):
+    """
+    expected graph structure:
+    graph = {
+        'A': ['B', 'D'],
+        'B': ['A', 'C', 'E'],
+        'C': ['B', 'E', 'G'],
+        'D': ['A', 'F'],
+        'E': ['B', 'C'],
+        'F': ['B', 'D'],
+        'G': ['C']
+    }
+    """
 
     result = []
     visited_nodes = set()
 
-    def _depth_first_search(node_index):
+    def _depth_first_search(node):
 
-        result.append(node_index)
-        visited_nodes.add(node_index)
+        result.append(node)
+        visited_nodes.add(node)
 
-        for element in adjacency_list[node_index]:
+        for element in graph[node]:
+            if element not in visited_nodes:
+                _depth_first_search(element)
+
+    _depth_first_search(list(graph.keys())[0])
+
+    return result
+
+
+def dfs_recursive_index_node_graph(graph):
+    """
+    expected graph structure:
+    graph = {
+        [1, 3],
+        [0, 2, 4],
+        [1, 4, 6],
+        [0, 5],
+        [1, 2],
+        [1, 3],
+        [2]
+    }
+    """
+
+    result = []
+    visited_nodes = set()
+
+    def _depth_first_search(node):
+
+        result.append(node)
+        visited_nodes.add(node)
+
+        for element in graph[node]:
             if element not in visited_nodes:
                 _depth_first_search(element)
 
@@ -49,12 +91,12 @@ class Solution:
     # noinspection PyPep8Naming
     def dfsOfGraph(self, V, adj):
 
-        def _depth_first_search(node_index):
+        def _depth_first_search(node):
 
-            self.result.append(node_index)
-            self.visited_nodes.add(node_index)
+            self.result.append(node)
+            self.visited_nodes.add(node)
 
-            for element in adj[node_index]:
+            for element in adj[node]:
                 if element not in self.visited_nodes:
                     _depth_first_search(element)
 
