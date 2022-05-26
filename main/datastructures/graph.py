@@ -25,6 +25,20 @@ graph = [
 """
 
 
+def _breadth_first_search_iterative(graph, root_node):
+    if not graph:
+        return graph
+
+    queue = [root_node]
+    result = [root_node]
+    visited_nodes = {root_node}
+
+    while queue:
+        _visit_adjacent_nodes(graph, queue, result, visited_nodes)
+
+    return result
+
+
 def _breadth_first_search_recursive(graph, root_node):
     if not graph:
         return graph
@@ -33,22 +47,24 @@ def _breadth_first_search_recursive(graph, root_node):
     result = [root_node]
     visited_nodes = {root_node}
 
-    # expected_result = [0, 1, 3, 2, 4, 5, 6]
     def _breadth_first_search():
         if queue:
-            node = queue.pop(0)
-
-            for adjacent_node in graph[node]:
-                if adjacent_node not in visited_nodes:
-                    queue.append(adjacent_node)
-                    result.append(adjacent_node)
-                    visited_nodes.add(adjacent_node)
-
+            _visit_adjacent_nodes(graph, queue, result, visited_nodes)
             _breadth_first_search()
 
     _breadth_first_search()
 
     return result
+
+
+def _visit_adjacent_nodes(graph, queue, result, visited_nodes):
+    node = queue.pop(0)
+
+    for adjacent_node in graph[node]:
+        if adjacent_node not in visited_nodes:
+            queue.append(adjacent_node)
+            result.append(adjacent_node)
+            visited_nodes.add(adjacent_node)
 
 
 def _depth_first_search_iterative(graph, root_node):
@@ -94,8 +110,22 @@ def _depth_first_search_recursive(graph, root_node):
     return result
 
 
+def bfs_iterative_index_node_graph(graph):
+    return _breadth_first_search_iterative(graph, 0)
+
+
+def bfs_iterative_character_node_graph(graph):
+    root_node = list(graph.keys())[0]
+    return _breadth_first_search_iterative(graph, root_node)
+
+
 def bfs_recursive_index_node_graph(graph):
     return _breadth_first_search_recursive(graph, 0)
+
+
+def bfs_recursive_character_node_graph(graph):
+    root_node = list(graph.keys())[0]
+    return _breadth_first_search_recursive(graph, root_node)
 
 
 def dfs_iterative_character_node_graph(graph):

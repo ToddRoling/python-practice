@@ -21,6 +21,24 @@ index_node_graph = [
 ]
 
 
+def test_bfs_iterative_character_node_graph():
+    expected_result = ['A', 'B', 'D', 'C', 'E', 'F', 'G']
+    actual_result = bfs_iterative_character_node_graph(character_node_graph)
+    assert actual_result == expected_result
+
+
+def test_bfs_iterative_index_node_graph():
+    expected_result = [0, 1, 3, 2, 4, 5, 6]
+    actual_result = bfs_iterative_index_node_graph(index_node_graph)
+    assert actual_result == expected_result
+
+
+def test_bfs_recursive_character_node_graph():
+    expected_result = ['A', 'B', 'D', 'C', 'E', 'F', 'G']
+    actual_result = bfs_recursive_character_node_graph(character_node_graph)
+    assert actual_result == expected_result
+
+
 def test_bfs_recursive_index_node_graph():
     expected_result = [0, 1, 3, 2, 4, 5, 6]
     actual_result = bfs_recursive_index_node_graph(index_node_graph)
