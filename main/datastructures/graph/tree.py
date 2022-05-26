@@ -21,13 +21,15 @@ def minimum_depth_recursive(root):
     return minimum_depth
 
 
+class Node:
+    def __init__(self, value):
+        self.right = None
+        self.value = value
+        self.left = None
+
+
 # My solution for https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/1/
 class Solution:
-    class Node:
-        def __init__(self, val):
-            self.right = None
-            self.data = val
-            self.left = None
 
     def __init__(self):
         self.minimum_depth = -1
