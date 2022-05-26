@@ -1,4 +1,4 @@
-from main.graph import *
+from main.datastructures.graph import *
 
 character_node_graph = {
     'A': ['B', 'D'],
@@ -21,6 +21,24 @@ index_node_graph = [
 ]
 
 
+def test_bfs_recursive_index_node_graph():
+    expected_result = [0, 1, 3, 2, 4, 5, 6]
+    actual_result = bfs_recursive_index_node_graph(index_node_graph)
+    assert actual_result == expected_result
+
+
+def test_dfs_iterative_character_node_graph():
+    expected_result = ['A', 'B', 'C', 'E', 'G', 'D', 'F']
+    actual_result = dfs_iterative_character_node_graph(character_node_graph)
+    assert actual_result == expected_result
+
+
+def test_dfs_iterative_index_node_graph():
+    expected_result = [0, 1, 2, 4, 6, 3, 5]
+    actual_result = dfs_iterative_index_node_graph(index_node_graph)
+    assert actual_result == expected_result
+
+
 def test_dfs_recursive_character_node_graph():
     # append A, B, C, E
     # pop E (via recursive function end)
@@ -31,10 +49,10 @@ def test_dfs_recursive_character_node_graph():
 
     expected_result = ['A', 'B', 'C', 'E', 'G', 'D', 'F']
     actual_result = dfs_recursive_character_node_graph(character_node_graph)
-    assert expected_result == actual_result
+    assert actual_result == expected_result
 
 
 def test_dfs_recursive_index_node_graph():
     expected_result = [0, 1, 2, 4, 6, 3, 5]
     actual_result = dfs_recursive_index_node_graph(index_node_graph)
-    assert expected_result == actual_result
+    assert actual_result == expected_result
