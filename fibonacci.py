@@ -7,3 +7,4 @@ def print_fibonacci(depth):
         b += temp
         print(f", {b}", end='')
     print()
+

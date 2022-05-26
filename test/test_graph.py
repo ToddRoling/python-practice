@@ -1,4 +1,4 @@
-from main.datastructures.graph import *
+from datastructures.graph import *
 
 character_node_graph = {
     'A': ['B', 'D'],
