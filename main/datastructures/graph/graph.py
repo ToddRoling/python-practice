@@ -84,7 +84,7 @@ def _depth_first_search_iterative(graph, root_node):
             result.append(node)
 
             adjacency_list = graph[node]
-            for adjacent_node in adjacency_list[-1::-1]:
+            for adjacent_node in adjacency_list[::-1]:
                 stack.append(adjacent_node)
 
     return result
