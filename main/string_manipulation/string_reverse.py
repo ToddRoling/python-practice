@@ -1,9 +1,8 @@
-def by_slicing(string):
+def reverse_slice(string):
     return string[::-1]
 
 
-def by_traversal_from_both_ends(string):
-
+def traverse_from_both_ends(string):
     left_index = 0
     right_index = len(string) - 1
 
@@ -17,8 +16,7 @@ def by_traversal_from_both_ends(string):
     return string
 
 
-def by_traversal_to_midpoint(string):
-
+def traverse_to_midpoint(string):
     string_range = range(int(len(string) / 2))
     string_end_index = len(string) - 1
 
