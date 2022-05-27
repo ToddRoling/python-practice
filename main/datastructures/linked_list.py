@@ -1,20 +1,19 @@
 def reverse_singly_linked_list_iterative(head):
-    if head is None:
-        return None
-    elif head.next is None:
-        return head
-    else:
-        node = head
-        next_node = node.next
+
+    if not (head is None or head.next is None):
+        current_node = head
+        next_node = current_node.next
         head.next = None
 
         while next_node is not None:
             next_next_node = next_node.next
-            next_node.next = node
-            node = next_node
+            next_node.next = current_node
+            current_node = next_node
             next_node = next_next_node
 
-        return node
+        head = current_node
+
+    return head
 
 
 def reverse_singly_linked_list_recursive(head):
