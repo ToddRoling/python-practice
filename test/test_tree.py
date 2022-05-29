@@ -4,6 +4,19 @@ solution = Solution()
 
 
 # noinspection PyPep8Naming
+def test_InOrder():
+    root_node = Node(10)
+    root_node.left = Node(20)
+    root_node.left.left = Node(40)
+    root_node.left.right = Node(60)
+    root_node.right = Node(30)
+    root_node.right.left = Node(50)
+    actual_result = solution.InOrder(root_node)
+    expected_result = [40, 20, 60, 10, 50, 30]
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
 def test_minDepth_no_root():
     actual_result = solution.minDepth(None)
     expected_result = 0

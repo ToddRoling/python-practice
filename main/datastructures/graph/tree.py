@@ -1,3 +1,16 @@
+def in_order_recursive(root):
+    result = []
+
+    def _in_order(node):
+        if node:
+            _in_order(node.left)
+            result.append(node.value)
+            _in_order(node.right)
+
+    _in_order(root)
+    return result
+
+
 def minimum_depth_recursive(root):
     if not root:
         return 0
@@ -28,13 +41,27 @@ class Node:
         self.left = None
 
 
-# My solution for https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/1/
 class Solution:
 
     def __init__(self):
         self.minimum_depth = -1
 
-    # noinspection PyPep8Naming
+    # My solution for https://practice.geeksforgeeks.org/problems/inorder-traversal/1
+    # noinspection PyMethodMayBeStatic,PyPep8Naming
+    def InOrder(self, root):
+        result = []
+
+        def in_order(node):
+            if node:
+                in_order(node.left)
+                result.append(node.value)
+                in_order(node.right)
+
+        in_order(root)
+        return result
+
+    # My solution for https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/1/
+    # noinspection PyMethodMayBeStatic,PyPep8Naming
     def minDepth(self, root):
         if not root:
             return 0
