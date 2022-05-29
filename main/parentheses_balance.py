@@ -7,13 +7,12 @@ class Solution:
         for character in x:
             if character in "{[(":
                 stack.append(character)
-            if character == '}':
-                if not (stack and (stack.pop() == '{')):
+            if character in "}])":
+                if not stack:
                     return False
-            if character == ']':
-                if not (stack and (stack.pop() == '[')):
-                    return False
-            if character == ')':
-                if not (stack and (stack.pop() == '(')):
+                next_stack_character = stack.pop()
+                if character == '}' and next_stack_character != '{' or \
+                        character == ']' and next_stack_character != '[' or \
+                        character == ')' and next_stack_character != '(':
                     return False
         return not stack
