@@ -1,4 +1,4 @@
-def in_order_recursive(root):
+def in_order_traversal_recursive(root):
     result = []
 
     def _in_order(node):
