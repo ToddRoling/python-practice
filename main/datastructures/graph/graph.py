@@ -26,30 +26,30 @@ graph = [
 
 
 def _breadth_first_search_iterative(graph, root_node):
-    if not graph:
+    if not graph or root_node is None:
         return graph
 
     queue = [root_node]
-    result = [root_node]
-    visited_nodes = {root_node}
+    result = []
+    visited_nodes = set()
 
     while queue:
-        _visit_adjacent_nodes(graph, queue, result, visited_nodes)
+        _bfs_helper_visit_node(graph, queue, result, visited_nodes)
 
     return result
 
 
 def _breadth_first_search_recursive(graph, root_node):
-    if not graph:
+    if not graph or root_node is None:
         return graph
 
     queue = [root_node]
-    result = [root_node]
-    visited_nodes = {root_node}
+    result = []
+    visited_nodes = set()
 
     def _breadth_first_search():
         if queue:
-            _visit_adjacent_nodes(graph, queue, result, visited_nodes)
+            _bfs_helper_visit_node(graph, queue, result, visited_nodes)
             _breadth_first_search()
 
     _breadth_first_search()
@@ -57,14 +57,16 @@ def _breadth_first_search_recursive(graph, root_node):
     return result
 
 
-def _visit_adjacent_nodes(graph, queue, result, visited_nodes):
+def _bfs_helper_visit_node(graph, queue, result, visited_nodes):
     node = queue.pop(0)
 
-    for adjacent_node in graph[node]:
-        if adjacent_node not in visited_nodes:
-            queue.append(adjacent_node)
-            result.append(adjacent_node)
-            visited_nodes.add(adjacent_node)
+    if node not in visited_nodes:
+        result.append(node)
+        visited_nodes.add(node)
+
+        for neighbor in graph[node]:
+            if neighbor not in visited_nodes:
+                queue.append(neighbor)
 
 
 def _depth_first_search_iterative(graph, root_node):
