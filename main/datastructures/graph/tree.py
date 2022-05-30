@@ -16,6 +16,29 @@ def level_order_traversal_iterative(root):
     return result
 
 
+# My solution for https://practice.geeksforgeeks.org/problems/level-order-traversal-line-by-line/1/
+def level_order_traversal_level_lists_iterative(root):
+    result = []
+
+    if root:
+        queue = [root]
+
+        while queue:
+            level_result = []
+
+            for i in range(len(queue)):
+                node = queue.pop(0)
+                level_result.append(node.value)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+            result.append(level_result)
+
+    return result
+
+
 def in_order_traversal_recursive(root):
     result = []
 
