@@ -1,3 +1,21 @@
+def level_order_traversal_iterative(root):
+    result = []
+
+    if root:
+        queue = [root]
+
+        while queue:
+            node = queue.pop(0)
+            result.append(node)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+    return result
+
+
 def in_order_traversal_recursive(root):
     result = []
 
