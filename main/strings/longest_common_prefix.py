@@ -6,7 +6,7 @@ class Solution:
         if not arr:
             return -1
         if len(arr) == 1:
-            return arr[0]
+            return arr[0] if arr[0] else -1
 
         prefix = min(arr, key=len)
         arr.remove(prefix)
