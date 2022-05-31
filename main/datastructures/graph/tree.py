@@ -82,13 +82,22 @@ class Node:
         self.left = None
 
 
+# noinspection PyMethodMayBeStatic,PyPep8Naming
 class Solution:
 
     def __init__(self):
         self.minimum_depth = -1
 
+    # My solution for https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1
+    def height(self, root):
+        def _height(node):
+            if node:
+                return 1 + max(_height(node.left), _height(node.right))
+            return 0
+
+        return _height(root)
+
     # My solution for https://practice.geeksforgeeks.org/problems/inorder-traversal/1
-    # noinspection PyMethodMayBeStatic,PyPep8Naming
     def InOrder(self, root):
         result = []
 
