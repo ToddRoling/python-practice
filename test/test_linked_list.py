@@ -29,14 +29,14 @@ def create_linked_list(list_):
 def test_find_mid_even_length(create_linked_list_even_length):
     linked_list_head = create_linked_list_even_length
     expected_result = 'd'
-    actual_result = find_mid(linked_list_head)
+    actual_result = get_singly_linked_list_middle_value(linked_list_head)
     assert actual_result == expected_result
 
 
 def test_find_mid_odd_length(create_linked_list_odd_length):
     linked_list_head = create_linked_list_odd_length
     expected_result = 'c'
-    actual_result = find_mid(linked_list_head)
+    actual_result = get_singly_linked_list_middle_value(linked_list_head)
     assert actual_result == expected_result
 
 

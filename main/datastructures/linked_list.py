@@ -1,4 +1,4 @@
-def find_mid(head):
+def get_singly_linked_list_middle_value(head):
     leading_node = head
     trailing_node = head
 
