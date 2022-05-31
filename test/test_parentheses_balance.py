@@ -27,6 +27,7 @@ TEST_DATA = [
 ]
 
 
-@pytest.mark.parametrize("string, expected", TEST_DATA)
-def test_parentheses_balance(string, expected):
-    assert solution.ispar(string) == expected
+@pytest.mark.parametrize("string, expected_result", TEST_DATA)
+def test_parentheses_balance(string, expected_result):
+    actual_result = solution.ispar(string)
+    assert actual_result == expected_result
