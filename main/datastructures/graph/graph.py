@@ -148,6 +148,7 @@ def dfs_recursive_index_node_graph(graph):
     return _depth_first_search_recursive(graph, 0)
 
 
+# noinspection PyPep8Naming,PyMethodMayBeStatic
 class Solution:
 
     def __init__(self):
@@ -156,7 +157,6 @@ class Solution:
         self.visited_nodes = set()
 
     # My solution for https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
-    # noinspection PyPep8Naming
     def bfsOfGraph(self, V, adj):
 
         self.queue = [0]
@@ -197,3 +197,50 @@ class Solution:
         _depth_first_search(0)
 
         return self.result
+
+    # My solution for https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+    # Function to detect cycle in a directed graph.
+    def isCyclic(self, V, adj):
+        if not adj or V <= 0:
+            return False
+
+        def _has_path_bfs(root, target):
+            self.queue = [root]
+
+            while self.queue:
+                node = self.queue.pop(0)
+                if node == target:
+                    return True
+
+                if node not in self.visited_nodes:
+                    self.visited_nodes.add(node)
+                    for neighbor_ in adj[node]:
+                        if neighbor_ not in self.visited_nodes:
+                            self.queue.append(neighbor_)
+            return False
+
+        def _has_path_dfs(node, target):
+            if node == target:
+                return True
+            if node not in self.visited_nodes:
+                self.visited_nodes.add(node)
+                for neighbor_ in adj[node]:
+                    desired_path_ = (neighbor, target)
+                    if desired_path_ not in dead_ends:
+                        if _has_path_dfs(neighbor_, target):
+                            return True
+                return False
+
+        dead_ends = set()
+        for index, neighbors in enumerate(adj):
+            if neighbors:
+                for neighbor in neighbors:
+                    desired_path = (neighbor, index)
+                    if desired_path not in dead_ends:
+                        self.visited_nodes = set()
+                        if _has_path_dfs(neighbor, index):
+                            return True
+                        else:
+                            dead_ends.add(desired_path)
+
+        return False
