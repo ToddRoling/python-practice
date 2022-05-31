@@ -25,12 +25,12 @@ class Solution:
             visited_nodes[node] = True
 
             for child in adj[node]:
+                if ancestor_nodes[child]:
+                    # Back edge if node's child is also an ancestor
+                    return True
                 if not visited_nodes[child]:
                     if _is_cyclic(child):
                         return True
-                if ancestor_nodes[child]:
-                    # Back edge if visited node's child is also an ancestor
-                    return True
 
             ancestor_nodes[node] = False
             return False
