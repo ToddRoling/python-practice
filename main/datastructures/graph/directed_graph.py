@@ -1,27 +1,10 @@
 """
-expected character-node graph structure:
-graph = {
-    'A': ['B', 'D'],
-    'B': ['A', 'C', 'E'],
-    'C': ['B', 'E', 'G'],
-    'D': ['A', 'F'],
-    'E': ['B', 'C'],
-    'F': ['B', 'D'],
-    'G': ['C']
-}
-"""
-
-"""
-expected index-node graph structure:
-graph = [
-    [1, 3],
-    [0, 2, 4],
-    [1, 4, 6],
-    [0, 5],
-    [1, 2],
-    [1, 3],
-    [2]
-]
+expected index-node graph (adjacency list) structures:
+e.g. graph = [[1], [2], [3], [3]]
+e.g. graph = [[2], [3], [4], [], [7], [1, 6], [0], [5]]
+e.g. graph = [[], [5, 6, 8, 9], [3, 7], [1], [0], [1, 4], [8, 9], [0, 1, 2], [4, 5, 7], [1, 8]]
+e.g. graph = [[], [0, 4], [1, 3, 4], [0, 2, 4], [0, 5], [0]]
+e.g. graph = [[4], [10], [1], [2], [5, 6], [6], [8], [0], [9], [3], []]
 """
 
 
@@ -46,7 +29,7 @@ class Solution:
                     if _is_cyclic(child):
                         return True
                 if ancestor_nodes[child]:
-                    # Back edge if node's child is also an ancestor
+                    # Back edge if visited node's child is also an ancestor
                     return True
 
             ancestor_nodes[node] = False
