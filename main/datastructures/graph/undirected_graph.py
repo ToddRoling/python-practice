@@ -197,33 +197,3 @@ class Solution:
         _depth_first_search(0)
 
         return self.result
-
-    # My solution for https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
-    # Function to detect cycle in a directed graph.
-    def isCyclic(self, V, adj):
-        if not adj or V <= 0:
-            return False
-
-        ancestor_nodes = [False] * V
-        visited_nodes = [False] * V
-
-        def _is_cyclic(node):
-            ancestor_nodes[node] = True
-            visited_nodes[node] = True
-
-            for child in adj[node]:
-                if not visited_nodes[child]:
-                    if _is_cyclic(child):
-                        return True
-                if ancestor_nodes[child]:
-                    # Back edge if node's child is also an ancestor
-                    return True
-
-            ancestor_nodes[node] = False
-            return False
-
-        for root in range(V):
-            if not visited_nodes[root]:
-                if _is_cyclic(root):
-                    return True
-        return False
