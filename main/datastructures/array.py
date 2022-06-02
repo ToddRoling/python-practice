@@ -15,8 +15,8 @@ class Solution:
                 return False
             else:
                 frequencies[element] -= 1
-        for element in frequencies:
-            if frequencies[element] != 0:
+        for key in frequencies:
+            if frequencies[key] != 0:
                 return False
         return True
 
