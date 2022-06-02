@@ -1,6 +1,6 @@
 import pytest
 
-from main.sort.sort import Solution
+from main.sort.dutch_flag import Solution
 
 SORT_012_TEST_DATA = [
     (None, None),
