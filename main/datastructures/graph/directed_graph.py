@@ -1,5 +1,5 @@
 """
-expected index-node graph (adjacency list) structures:
+expected index-node graph (adjacency list) structure format:
 e.g. graph = [[1], [2], [3], [3]]
 e.g. graph = [[2], [3], [4], [], [7], [1, 6], [0], [5]]
 e.g. graph = [[], [5, 6, 8, 9], [3, 7], [1], [0], [1, 4], [8, 9], [0, 1, 2], [4, 5, 7], [1, 8]]

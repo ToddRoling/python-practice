@@ -94,6 +94,13 @@ def test_InOrder():
 
 
 # noinspection PyPep8Naming
+def test_inOrder():
+    actual_result = solution.inOrder(MEDIUM_TREE_ROOT_NODE)
+    expected_result = [40, 20, 60, 10, 70, 50, 30]
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
 def test_minDepth_no_root():
     actual_result = solution.minDepth(None)
     expected_result = 0

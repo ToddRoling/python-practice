@@ -1,4 +1,4 @@
-def level_order_traversal_iterative(root):
+def breadth_first_search(root):
     result = []
 
     if root:
@@ -7,7 +7,6 @@ def level_order_traversal_iterative(root):
         while queue:
             node = queue.pop(0)
             result.append(node)
-
             if node.left:
                 queue.append(node.left)
             if node.right:
@@ -16,27 +15,8 @@ def level_order_traversal_iterative(root):
     return result
 
 
-# My solution for https://practice.geeksforgeeks.org/problems/level-order-traversal-line-by-line/1/
-def level_order_traversal_level_lists_iterative(root):
-    result = []
-
-    if root:
-        queue = [root]
-
-        while queue:
-            level_result = []
-
-            for i in range(len(queue)):
-                node = queue.pop(0)
-                level_result.append(node.value)
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-
-            result.append(level_result)
-
-    return result
+def level_order_traversal_iterative(root):
+    return breadth_first_search(root)
 
 
 def in_order_traversal_recursive(root):
@@ -75,10 +55,36 @@ def minimum_depth_recursive(root):
     return minimum_depth
 
 
+def post_order_traversal_recursive(root):
+    result = []
+
+    def _post_order(node):
+        if node:
+            _post_order(node.left)
+            _post_order(node.right)
+            result.append(node.value)
+
+    _post_order(root)
+    return result
+
+
+def pre_order_traversal_recursive(root):
+    result = []
+
+    def _pre_order(node):
+        if node:
+            result.append(node.value)
+            _pre_order(node.left)
+            _pre_order(node.right)
+
+    _pre_order(root)
+    return result
+
+
 class Node:
-    def __init__(self, value):
+    def __init__(self, data):
         self.right = None
-        self.value = value
+        self.data = data
         self.left = None
 
 
@@ -97,6 +103,23 @@ class Solution:
 
         return _height(root)
 
+    # My solution to https://practice.geeksforgeeks.org/problems/inorder-traversal-iterative/1/
+    def inOrder(self, root):
+        result = []
+
+        if root:
+            stack = []
+            current_node = root
+            while stack or current_node:
+                while current_node:
+                    stack.append(current_node)
+                    current_node = current_node.left
+                current_node = stack.pop()
+                result.append(current_node.data)
+                current_node = current_node.right
+
+        return result
+
     # My solution for https://practice.geeksforgeeks.org/problems/inorder-traversal/1
     def InOrder(self, root):
         result = []
@@ -104,10 +127,32 @@ class Solution:
         def in_order(node):
             if node:
                 in_order(node.left)
-                result.append(node.value)
+                result.append(node.data)
                 in_order(node.right)
 
         in_order(root)
+        return result
+
+    # My solution for https://practice.geeksforgeeks.org/problems/level-order-traversal-line-by-line/1/
+    def level_order_traversal_level_lists_iterative(self, root):
+        result = []
+
+        if root:
+            queue = [root]
+
+            while queue:
+                level_result = []
+
+                for i in range(len(queue)):
+                    node = queue.pop(0)
+                    level_result.append(node.data)
+                    if node.left:
+                        queue.append(node.left)
+                    if node.right:
+                        queue.append(node.right)
+
+                result.append(level_result)
+
         return result
 
     # My solution for https://practice.geeksforgeeks.org/problems/minimum-depth-of-a-binary-tree/1/

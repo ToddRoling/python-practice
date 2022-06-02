@@ -1,5 +1,5 @@
 """
-expected character-node graph structure:
+expected character-node graph structure format:
 graph = {
     'A': ['B', 'D'],
     'B': ['A', 'C', 'E'],
@@ -12,7 +12,7 @@ graph = {
 """
 
 """
-expected index-node graph structure:
+expected index-node graph structure format:
 graph = [
     [1, 3],
     [0, 2, 4],
@@ -34,7 +34,7 @@ def _breadth_first_search_iterative(graph, root_node):
     visited_nodes = set()
 
     while queue:
-        _bfs_helper_visit_node(graph, queue, result, visited_nodes)
+        _bfs_visit_first_queued_node(graph, queue, result, visited_nodes)
 
     return result
 
@@ -49,7 +49,7 @@ def _breadth_first_search_recursive(graph, root_node):
 
     def _breadth_first_search():
         if queue:
-            _bfs_helper_visit_node(graph, queue, result, visited_nodes)
+            _bfs_visit_first_queued_node(graph, queue, result, visited_nodes)
             _breadth_first_search()
 
     _breadth_first_search()
@@ -57,7 +57,7 @@ def _breadth_first_search_recursive(graph, root_node):
     return result
 
 
-def _bfs_helper_visit_node(graph, queue, result, visited_nodes):
+def _bfs_visit_first_queued_node(graph, queue, result, visited_nodes):
     node = queue.pop(0)
 
     if node not in visited_nodes:
