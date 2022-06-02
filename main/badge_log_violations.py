@@ -1,22 +1,22 @@
-def get_badge_log_violations(badge_records: list[list]):
-    entries_without_exits = set()
-    exits_without_entries = set()
+def get_badge_log_violations(badge_records):
+    no_entry = set()
+    no_exit = set()
     occupants = set()
 
     for badge_record in badge_records:
-        employee_name = badge_record[0]
+        name = badge_record[0]
         if badge_record[1] == "enter":
-            if employee_name in occupants:
-                entries_without_exits.add(employee_name)
+            if name in occupants:
+                no_exit.add(name)
             else:
-                occupants.add(employee_name)
+                occupants.add(name)
         else:
-            if employee_name not in occupants:
-                exits_without_entries.add(employee_name)
+            if name not in occupants:
+                no_entry.add(name)
             else:
-                occupants.remove(employee_name)
+                occupants.remove(name)
 
-    for employee_name in occupants:
-        entries_without_exits.add(employee_name)
+    for name in occupants:
+        no_exit.add(name)
 
-    return entries_without_exits, exits_without_entries
+    return no_exit, no_entry
