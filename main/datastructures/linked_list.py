@@ -44,21 +44,6 @@ def reverse_singly_linked_list_recursive(head):
 
 ###
 
-def convert_list(head):
-    list_ = []
-    node = head
-    while node:
-        list_.append(node.data)
-        node = node.next
-    return list_
-
-
-class Node:
-
-    def __init__(self, data=0, next_node=None):
-        self.data = data
-        self.next = next_node
-
 
 class Solution:
 
@@ -73,3 +58,19 @@ class Solution:
             trailing_node = trailing_node.next
 
         return trailing_node.data
+
+
+class Node:
+
+    def __init__(self, data=0, next_node=None):
+        self.data = data
+        self.next = next_node
+
+
+def convert_to_python_list(head):
+    list_ = []
+    node = head
+    while node:
+        list_.append(node.data)
+        node = node.next
+    return list_

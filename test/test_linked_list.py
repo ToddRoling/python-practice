@@ -52,7 +52,7 @@ def test_reverse_singly_linked_list_iterative(create_linked_list_odd_length):
     linked_list_head = create_linked_list_odd_length
     expected_result = NODE_DATA_LIST_ODD_LENGTH_REVERSED
     actual_result = reverse_singly_linked_list_iterative(linked_list_head)
-    actual_result = convert_list(actual_result)
+    actual_result = convert_to_python_list(actual_result)
     assert actual_result == expected_result
 
 
@@ -60,5 +60,5 @@ def test_reverse_singly_linked_list_recursive(create_linked_list_odd_length):
     linked_list_head = create_linked_list_odd_length
     expected_result = NODE_DATA_LIST_ODD_LENGTH_REVERSED
     actual_result = reverse_singly_linked_list_recursive(linked_list_head)
-    actual_result = convert_list(actual_result)
+    actual_result = convert_to_python_list(actual_result)
     assert actual_result == expected_result
