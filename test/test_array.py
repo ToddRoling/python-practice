@@ -4,6 +4,15 @@ from main.datastructures.array import Solution
 
 solution = Solution()
 
+ARRAY_MISSING_NUMBER_TEST_DATA = [
+    (None, -1),
+    ([1, 2, 3, 5], 4),
+    ([6, 1, 2, 8, 3, 4, 7, 10, 5], 9),
+    ([2], 1),
+    ([1, 2, 3], 4),
+    ([5, 4, 3, 2], 1),
+    ([], 1)
+]
 MAX_SUB_ARRAY_SUM_TEST_DATA = [
     ([], None),
     ([0, 0], 0),
@@ -17,13 +26,6 @@ MAX_SUB_ARRAY_SUM_TEST_DATA = [
     ([0, -1, 0, 0, -10000, -20000], 0),
     ([93, -122, -78, 10, -9, 111, 0], 112)
 ]
-
-
-# noinspection PyPep8Naming
-@pytest.mark.parametrize("array, expected_result", MAX_SUB_ARRAY_SUM_TEST_DATA)
-def test_maxSubArraySum(array, expected_result):
-    actual_result = solution.maxSubArraySum(array, len(array))
-    assert actual_result == expected_result
 
 
 def test_array_equality_equal_both_empty():
@@ -71,4 +73,19 @@ def test_array_equality_unequal_small():
     array_b = [2]
     actual_result = solution.check(array_a, array_b, 5)
     expected_result = False
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
+@pytest.mark.parametrize("array, expected_result", MAX_SUB_ARRAY_SUM_TEST_DATA)
+def test_maxSubArraySum(array, expected_result):
+    actual_result = solution.maxSubArraySum(array, len(array))
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
+@pytest.mark.parametrize("array, expected_result", ARRAY_MISSING_NUMBER_TEST_DATA)
+def test_MissingNumber(array, expected_result):
+    range_upper_bound = len(array) + 1 if array is not None else 0
+    actual_result = solution.MissingNumber(array, range_upper_bound)
     assert actual_result == expected_result

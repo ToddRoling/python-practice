@@ -31,6 +31,17 @@ class Solution:
                 maximum_sum = max(current_maximum_sum, maximum_sum)
             return maximum_sum
 
+    # My solution for https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1
+    def MissingNumber(self, array, n):
+        valid_input = array is not None and len(array) + 1 == n
+        if valid_input:
+            expected_sum = int(n * (n + 1) / 2)
+            actual_sum = 0
+            for integer in array:
+                actual_sum += integer
+            return expected_sum - actual_sum
+        return -1
+
     # My solution to https://practice.geeksforgeeks.org/problems/reverse-array-in-groups0255/1
     # Function to reverse every sub-array group of size k.
     def reverseInGroups(self, arr, N, K):
