@@ -10,7 +10,7 @@ def fibonacci_iterative(n):
     return b
 
 
-# Note: Time complexity for recursive solution is horrible at 0(2^n) so use iterative (O(n)) instead.
+# Note: Time complexity for recursive solution is horrible at 0(2^n), so use iterative (O(n)) instead.
 # return nth fibonacci term
 def fibonacci_recursive(n):
     if n < 2:
