@@ -59,3 +59,21 @@ class Solution:
                 subgroup_last_index -= 1
 
         return arr
+
+    # My solution to https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
+    def zigZag(self, arr, n):
+
+        valid_input = arr is not None and n == len(arr)
+        if not valid_input:
+            return None
+
+        less_than = True
+
+        for index in range(n - 1):
+            if less_than and arr[index] > arr[index + 1] or not less_than and arr[index] < arr[index + 1]:
+                arr[index], arr[index + 1] = arr[index + 1], arr[index]
+            less_than = not less_than
+
+        return arr
+
+

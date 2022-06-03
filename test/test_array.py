@@ -26,6 +26,12 @@ MAX_SUB_ARRAY_SUM_TEST_DATA = [
     ([0, -1, 0, 0, -10000, -20000], 0),
     ([93, -122, -78, 10, -9, 111, 0], 112)
 ]
+ZIG_ZAG_TEST_DATA = [
+    (None, None),
+    ([], []),
+    ([4, 3, 7, 8, 6, 2, 1], [3, 7, 4, 8, 2, 6, 1]),
+    ([1, 4, 3, 2], [1, 4, 2, 3])
+]
 
 
 def test_array_equality_equal_both_empty():
@@ -88,4 +94,12 @@ def test_maxSubArraySum(array, expected_result):
 def test_MissingNumber(array, expected_result):
     range_upper_bound = len(array) + 1 if array is not None else 0
     actual_result = solution.MissingNumber(array, range_upper_bound)
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
+@pytest.mark.parametrize("array, expected_result", ZIG_ZAG_TEST_DATA)
+def test_zigZag(array, expected_result):
+    range_upper_bound = len(array) if array is not None else 0
+    actual_result = solution.zigZag(array, range_upper_bound)
     assert actual_result == expected_result
