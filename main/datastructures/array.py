@@ -1,4 +1,4 @@
-def accumulate(array: list[int]):
+def get_array_sum(array: list[int]):
     if not array:
         return 0
     sum_ = 0
