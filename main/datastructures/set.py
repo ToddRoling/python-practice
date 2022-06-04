@@ -1,13 +1,13 @@
-def intersection_native(set_a, set_b):
-    return set_a.intersection(set_b)
-
-
 def intersection_custom(set_a, set_b):
     result = set()
     for element in set_a:
         if element in set_b:
             result.add(element)
     return result
+
+
+def intersection_native(set_a, set_b):
+    return set_a.intersection(set_b)
 
 
 def union_custom(set_a, set_b):
