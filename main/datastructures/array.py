@@ -40,6 +40,15 @@ class Solution:
                 maximum_sum = max(current_maximum_sum, maximum_sum)
             return maximum_sum
 
+    # My solution for https://practice.geeksforgeeks.org/problems/minimize-the-sum-of-product1525/1
+    def minValue(self, a, b, n):
+        a.sort(), b.sort()
+        sum_ = 0
+        for index, value in enumerate(a):
+            sum_ += value * b[n - index - 1]
+        return sum_
+
+
     # My solution for https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1
     def MissingNumber(self, array, n):
         valid_input = array is not None and len(array) + 1 == n
