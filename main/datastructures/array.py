@@ -1,3 +1,12 @@
+def accumulate(array: list[int]):
+    if not array:
+        return 0
+    sum_ = 0
+    for integer in array:
+        sum_ += integer
+    return sum_
+
+
 # noinspection PyMethodMayBeStatic,PyPep8Naming
 class Solution:
 
@@ -75,5 +84,3 @@ class Solution:
             less_than = not less_than
 
         return arr
-
-
