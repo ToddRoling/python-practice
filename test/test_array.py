@@ -97,6 +97,52 @@ def test_MissingNumber(array, expected_result):
     assert actual_result == expected_result
 
 
+def test_rotate_matrix_size_six():
+    array = [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+        [13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+        [31, 32, 33, 34, 35, 36]
+    ]
+    actual_result = solution.rotateMatrix(array, len(array))
+    print(actual_result)
+
+
+def test_rotate_matrix_size_five():
+    array = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25]
+    ]
+    actual_result = solution.rotateMatrix(array, len(array))
+    print(actual_result)
+
+
+def test_rotate_matrix_size_four():
+    array = [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 16]
+    ]
+    actual_result = solution.rotateMatrix(array, len(array))
+    print(actual_result)
+
+
+def test_rotate_matrix_size_three():
+    array = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+    actual_result = solution.rotateMatrix(array, len(array))
+    print(actual_result)
+
+
 # noinspection PyPep8Naming
 @pytest.mark.parametrize("array, expected_result", ZIG_ZAG_TEST_DATA)
 def test_zigZag(array, expected_result):

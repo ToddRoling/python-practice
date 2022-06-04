@@ -48,7 +48,6 @@ class Solution:
             sum_ += value * b[n - index - 1]
         return sum_
 
-
     # My solution for https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1
     def MissingNumber(self, array, n):
         valid_input = array is not None and len(array) + 1 == n
@@ -76,6 +75,21 @@ class Solution:
                 subgroup_first_index += 1
                 subgroup_last_index -= 1
 
+        return arr
+
+    # https://practice.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-space1004/1/
+    def rotateMatrix(self, arr, n):
+        max_index = n - 1
+        for row_index in range(max_index):
+            for col_index in range(row_index, max_index - row_index):
+                temp_one = arr[max_index - col_index][row_index]
+                temp_two = arr[max_index - row_index][max_index - col_index]
+                temp_three = arr[col_index][max_index - row_index]
+                temp_four = arr[row_index][col_index]
+                arr[max_index - col_index][row_index] = temp_four
+                arr[max_index - row_index][max_index - col_index] = temp_one
+                arr[col_index][max_index - row_index] = temp_two
+                arr[row_index][col_index] = temp_three
         return arr
 
     # My solution to https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
