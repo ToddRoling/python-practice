@@ -82,14 +82,11 @@ class Solution:
         max_index = n - 1
         for row_index in range(max_index):
             for col_index in range(row_index, max_index - row_index):
-                temp_one = arr[max_index - col_index][row_index]
-                temp_two = arr[max_index - row_index][max_index - col_index]
-                temp_three = arr[col_index][max_index - row_index]
-                temp_four = arr[row_index][col_index]
-                arr[max_index - col_index][row_index] = temp_four
-                arr[max_index - row_index][max_index - col_index] = temp_one
-                arr[col_index][max_index - row_index] = temp_two
-                arr[row_index][col_index] = temp_three
+                temp = arr[row_index][col_index]
+                arr[row_index][col_index] = arr[col_index][max_index - row_index]
+                arr[col_index][max_index - row_index] = arr[max_index - row_index][max_index - col_index]
+                arr[max_index - row_index][max_index - col_index] = arr[max_index - col_index][row_index]
+                arr[max_index - col_index][row_index] = temp
         return arr
 
     # My solution to https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
