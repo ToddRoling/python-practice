@@ -48,6 +48,22 @@ def test_findMid(create_linked_list_odd_length):
     assert actual_result == expected_result
 
 
+# noinspection PyPep8Naming
+def test_getNthFromLast_iterative(create_linked_list_odd_length):
+    linked_list_head = create_linked_list_odd_length
+    expected_result = 'd'
+    actual_result = getNthFromLast_iterative(linked_list_head, 2)
+    assert actual_result == expected_result
+
+
+# noinspection PyPep8Naming
+def test_getNthFromLast_recursive(create_linked_list_odd_length):
+    linked_list_head = create_linked_list_odd_length
+    expected_result = 'd'
+    actual_result = getNthFromLast_recursive(linked_list_head, 2)
+    assert actual_result == expected_result
+
+
 def test_reverse_singly_linked_list_iterative(create_linked_list_odd_length):
     linked_list_head = create_linked_list_odd_length
     expected_result = NODE_DATA_LIST_ODD_LENGTH_REVERSED
