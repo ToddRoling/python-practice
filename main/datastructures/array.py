@@ -98,13 +98,13 @@ class Solution:
             return left_index
 
         pivot_index = _find_pivot_index()
-        left_index = l
-        right_index = h
 
-        # determine if key exists in subarray to left or right of pivot index and reset indices
+        # determine if key exists in subarray to left or right of pivot index and reset indices accordingly
         if array[pivot_index] <= key <= array[right_index]:
             left_index = pivot_index
+            right_index = h
         else:
+            left_index = l
             right_index = pivot_index
 
         # standard binary search within new bounds
