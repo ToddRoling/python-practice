@@ -37,6 +37,12 @@ ROTATE_ARRAY_CCW_TEST_DATA = [
      [[6, 12, 18, 24, 30, 36], [5, 11, 17, 23, 29, 35], [4, 10, 16, 22, 28, 34], [3, 9, 15, 21, 27, 33],
       [2, 8, 14, 20, 26, 32], [1, 7, 13, 19, 25, 31]])
 ]
+ROTATED_ARRAY_SEARCH_TEST_DATA = [
+    ([5, 6, 7, 8, 9, 10, 1, 2, 3], 10, 5),
+    ([3, 5, 1, 2], 6, -1),
+    ([6, 18, -999, -45, -1, 0, 4, 5], 6, 0),
+    ([6, 18, -999, -45, -1, 0, 4, 5], -45, 3)
+]
 ZIG_ZAG_TEST_DATA = [
     (None, None),
     ([], []),
@@ -111,6 +117,12 @@ def test_MissingNumber(array, expected_result):
 @pytest.mark.parametrize("array, expected_result", ROTATE_ARRAY_CCW_TEST_DATA)
 def test_rotate_matrix_ccw(array, expected_result):
     actual_result = solution.rotateMatrix(array, len(array))
+    assert actual_result == expected_result
+
+
+@pytest.mark.parametrize("array, key, expected_result", ROTATED_ARRAY_SEARCH_TEST_DATA)
+def test_search(array, key, expected_result):
+    actual_result = solution.search(array, 0, len(array) - 1, key)
     assert actual_result == expected_result
 
 

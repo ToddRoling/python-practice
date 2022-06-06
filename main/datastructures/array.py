@@ -77,6 +77,49 @@ class Solution:
 
         return arr
 
+    # My solution for https://practice.geeksforgeeks.org/problems/search-in-a-rotated-array4618/1
+    def search(self, A: list, l: int, h: int, key: int):
+        # rename variables from problem for clarity and later reinitialization
+        array = A
+        left_index = l
+        right_index = h
+
+        if not array or (left_index < 0 or right_index < 0) or (right_index < left_index):
+            return -1
+
+        def _find_pivot_index():
+            nonlocal left_index, right_index
+            while left_index < right_index:
+                middle_index_ = int((left_index + right_index) / 2)
+                if array[middle_index_] > array[right_index]:
+                    left_index = middle_index_ + 1
+                else:
+                    right_index = middle_index_
+            return left_index
+
+        pivot_index = _find_pivot_index()
+        left_index = l
+        right_index = h
+
+        # determine if key exists in subarray to left or right of pivot index and reset indices
+        if array[pivot_index] <= key <= array[right_index]:
+            left_index = pivot_index
+        else:
+            right_index = pivot_index
+
+        # standard binary search within new bounds
+        while left_index <= right_index:
+            middle_index = int((left_index + right_index) / 2)
+            middle_value = array[middle_index]
+            if middle_value == key:
+                return middle_index
+            elif middle_value < key:
+                left_index = middle_index + 1
+            else:
+                right_index = middle_index - 1
+
+        return -1
+
     # https://practice.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-space1004/1/
     def rotateMatrix(self, arr, n):
         max_index = n - 1
