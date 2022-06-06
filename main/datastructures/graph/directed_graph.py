@@ -18,17 +18,17 @@ class Solution:
             return False
 
         ancestor_nodes = [False] * V
-        visited_nodes = [False] * V
+        visited_nodes = set()
 
         def _is_cyclic(node):
             ancestor_nodes[node] = True
-            visited_nodes[node] = True
+            visited_nodes.add(node)
 
             for child in adj[node]:
                 if ancestor_nodes[child]:
                     # Back edge if node's child is also an ancestor
                     return True
-                if not visited_nodes[child]:
+                if child not in visited_nodes:
                     if _is_cyclic(child):
                         return True
 
@@ -36,7 +36,7 @@ class Solution:
             return False
 
         for root in range(V):
-            if not visited_nodes[root]:
+            if root not in visited_nodes:
                 if _is_cyclic(root):
                     return True
         return False
