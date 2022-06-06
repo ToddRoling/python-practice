@@ -7,7 +7,7 @@ def minimal_number_of_packages(item_count, available_large_packages, available_s
         return -1
 
     ideal_large_package_count = int(item_count / LARGE_PACKAGE_SIZE)
-    ideal_small_package_count = int(item_count % LARGE_PACKAGE_SIZE)
+    ideal_small_package_count = item_count % LARGE_PACKAGE_SIZE
 
     large_package_deficit = ideal_large_package_count - available_large_packages
     additional_small_packages = 0
