@@ -7,7 +7,7 @@ def get_array_sum(array: list[int]):
     return sum_
 
 
-# noinspection PyMethodMayBeStatic,PyPep8Naming
+# noinspection PyMethodMayBeStatic,PyPep8Naming, PyUnusedLocal
 class Solution:
 
     # My solution to https://practice.geeksforgeeks.org/problems/check-if-two-arrays-are-equal-or-not3847/1
