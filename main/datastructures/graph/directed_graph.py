@@ -14,7 +14,7 @@ class Solution:
     # My solution for https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
     # Function to detect cycle in a directed graph.
     def isCyclic(self, V, adj):
-        if not adj or V <= 0:
+        if not adj or V <= 0 or len(adj) != V:
             return False
 
         ancestor_nodes = set()
