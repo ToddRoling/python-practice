@@ -2,8 +2,8 @@ def reverse_words_alternative(string):
     words = string.split(".")
 
     word_count = len(words)
-    range_ = int(word_count / 2)
-    for first_index in range(range_):
+    range_ = range(int(word_count / 2))
+    for first_index in range_:
         last_index = word_count - first_index - 1
         words[first_index], words[last_index] = words[last_index], words[first_index]
 
