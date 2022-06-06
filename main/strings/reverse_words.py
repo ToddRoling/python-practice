@@ -2,8 +2,10 @@ def reverse_words_alternative(string):
     words = string.split(".")
 
     word_count = len(words)
-    for index in range(int(word_count / 2)):
-        words[index], words[word_count - index - 1] = words[word_count - index - 1], words[index]
+    range_ = int(word_count / 2)
+    for first_index in range(range_):
+        last_index = word_count - first_index - 1
+        words[first_index], words[last_index] = words[last_index], words[first_index]
 
     return ".".join(words)
 
