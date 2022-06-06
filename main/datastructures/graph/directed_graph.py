@@ -17,22 +17,22 @@ class Solution:
         if not adj or V <= 0:
             return False
 
-        ancestor_nodes = [False] * V
+        ancestor_nodes = set()
         visited_nodes = set()
 
         def _is_cyclic(node):
-            ancestor_nodes[node] = True
+            ancestor_nodes.add(node)
             visited_nodes.add(node)
 
             for child in adj[node]:
-                if ancestor_nodes[child]:
+                if child in ancestor_nodes:
                     # Back edge if node's child is also an ancestor
                     return True
                 if child not in visited_nodes:
                     if _is_cyclic(child):
                         return True
 
-            ancestor_nodes[node] = False
+            ancestor_nodes.remove(node)
             return False
 
         for root in range(V):
