@@ -15,8 +15,8 @@ def breadth_first_search(root):
     return result
 
 
-def level_order_traversal_iterative(root):
-    return breadth_first_search(root)
+def depth_first_search(root):
+    return pre_order_traversal_recursive(root)
 
 
 def in_order_traversal_recursive(root):
@@ -30,6 +30,10 @@ def in_order_traversal_recursive(root):
 
     _in_order(root)
     return result
+
+
+def level_order_traversal_iterative(root):
+    return breadth_first_search(root)
 
 
 def minimum_depth_recursive(root):
@@ -79,13 +83,6 @@ def pre_order_traversal_recursive(root):
 
     _pre_order(root)
     return result
-
-
-class Node:
-    def __init__(self, data):
-        self.right = None
-        self.data = data
-        self.left = None
 
 
 # noinspection PyMethodMayBeStatic,PyPep8Naming
@@ -176,3 +173,10 @@ class Solution:
         minimum_depth(root, 0)
 
         return self.minimum_depth
+
+
+class Node:
+    def __init__(self, data):
+        self.right = None
+        self.data = data
+        self.left = None
