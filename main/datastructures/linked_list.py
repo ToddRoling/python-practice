@@ -1,12 +1,11 @@
-class Node:
-    # noinspection PyShadowingBuiltins
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
-
-
 # My implementation of LinkedList for practice
 class LinkedList:
+
+    class Node:
+        # noinspection PyShadowingBuiltins
+        def __init__(self, data=None, next=None):
+            self.data = data
+            self.next = next
 
     def __init__(self):
         self.head = None
@@ -38,7 +37,7 @@ class LinkedList:
 
     # appends a new node containing data at end of list
     def append(self, data):
-        new_node = Node(data)
+        new_node = LinkedList.Node(data)
         if self.size == 0:
             self.head = new_node
         else:
@@ -59,7 +58,7 @@ class LinkedList:
     def insert(self, index: int, data):
         if index > self.size - 1:
             self._raise_index_range_error()
-        new_node = Node(data)
+        new_node = LinkedList.Node(data)
         if index == 0:
             new_node.next = self.head
             self.head = new_node
