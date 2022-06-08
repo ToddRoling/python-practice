@@ -49,6 +49,9 @@ class LinkedList:
     def get(self, index):
         return self._get_node(index).data
 
+    def get_last(self):
+        return self.tail.data
+
     def get_mid(self):
         return self._get_middle_node().data
 
@@ -66,6 +69,18 @@ class LinkedList:
             previous_node.next = new_node
             new_node.next = next_node
         self.size += 1
+
+    # TODO: implement
+    def remove(self):
+        ...
+
+    # TODO: implement
+    def remove_last(self):
+        ...
+
+    # TODO: implement
+    def sort(self):
+        ...
 
     def reverse(self):
         if not (self.head is None or self.head.next is None):
