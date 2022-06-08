@@ -1,117 +1,87 @@
-# My solution for https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
-# noinspection PyPep8Naming
-def getNthFromLast_iterative(head, n):
-    if not head or n < 1:
-        return -1
-
-    leading_node = head
-    trailing_node = head
-
-    for index in range(n):
-        if leading_node is None:
-            return -1
-        leading_node = leading_node.next
-
-    while leading_node:
-        leading_node = leading_node.next
-        trailing_node = trailing_node.next
-
-    return trailing_node.data
+class Node:
+    # noinspection PyShadowingBuiltins
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
 
 
-# My solution for https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
-# noinspection PyPep8Naming
-def getNthFromLast_recursive(head, n):
-    if not head or n < 1:
-        return -1
+# My implementation of LinkedList for practice
+class LinkedList:
 
-    from_last_index = 0
-    result = -1
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.size = 0
 
-    def _get_nth_from_last(node):
-        nonlocal from_last_index, result
-        if node:
-            _get_nth_from_last(node.next)
-            from_last_index += 1
-            if from_last_index == n:
-                result = node.data
-
-    _get_nth_from_last(head)
-    return result
-
-
-def get_singly_linked_list_middle_value(head):
-    leading_node = head
-    trailing_node = head
-
-    while leading_node and leading_node.next:
-        leading_node = leading_node.next.next
-        trailing_node = trailing_node.next
-
-    return trailing_node.data
-
-
-def reverse_singly_linked_list_iterative(head):
-    if not (head is None or head.next is None):
-        current_node = head
-        next_node = current_node.next
-        head.next = None
-
-        while next_node is not None:
-            next_next_node = next_node.next
-            next_node.next = current_node
-            current_node = next_node
-            next_node = next_next_node
-
-        head = current_node
-
-    return head
-
-
-def reverse_singly_linked_list_recursive(head):
-    if not (head is None or head.next is None):
-        def _reverse_sll(node):
-            nonlocal head
-            if node.next is None:
-                head.next = None
-                head = node
-            else:
-                returned_node = _reverse_sll(node.next)
-                returned_node.next = node
-            return node
-
-        _reverse_sll(head)
-    return head
-
-
-###
-
-# noinspection PyPep8Naming,PyMethodMayBeStatic
-class Solution:
-
-    # My solution for https://practice.geeksforgeeks.org/problems/finding-middle-element-in-a-linked-list/1
-    def findMid(self, head):
-        leading_node = head
-        trailing_node = head
+    def _get_middle_node(self):
+        leading_node = self.head
+        trailing_node = self.head
 
         while leading_node and leading_node.next:
             leading_node = leading_node.next.next
             trailing_node = trailing_node.next
 
-        return trailing_node.data
+        return trailing_node
 
+    def _get_node(self, index):
+        if index > self.size - 1:
+            self._raise_index_range_error()
+        counter = 0
+        node = self.head
+        while counter < index:
+            node = node.next
+            counter += 1
+        return node
 
-class Node:
+    def _raise_index_range_error(self):
+        raise IndexError("index is out of range")
 
-    def __init__(self, data=0, next_node=None):
-        self.data = data
-        self.next = next_node
+    # appends a new node containing data at end of list
+    def append(self, data):
+        new_node = Node(data)
+        if self.size == 0:
+            self.head = new_node
+        else:
+            self.tail.next = new_node
+        self.tail = new_node
+        self.size += 1
 
+    def get(self, index):
+        return self._get_node(index).data
 
-def convert_to_python_list(head):
-    list_ = []
-    node = head
-    while node:
-        list_.append(node.data)
-        node = node.next
-    return list_
+    def get_mid(self):
+        return self._get_middle_node().data
+
+    # inserts a new node containing data before index
+    def insert(self, index: int, data):
+        if index > self.size - 1:
+            self._raise_index_range_error()
+        new_node = Node(data)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            previous_node = self._get_node(index - 1)
+            next_node = previous_node.next
+            previous_node.next = new_node
+            new_node.next = next_node
+        self.size += 1
+
+    def reverse(self):
+        if not (self.head is None or self.head.next is None):
+
+            current_node = self.head
+            next_node = current_node.next
+
+            self.tail = self.head
+            self.tail.next = None
+
+            while next_node is not None:
+                next_next_node = next_node.next
+                next_node.next = current_node
+                current_node = next_node
+                next_node = next_next_node
+
+            self.head = current_node
+
+        return self.head
