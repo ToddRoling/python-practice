@@ -7,6 +7,17 @@ def get_array_sum(array: list[int]):
     return sum_
 
 
+def two_sum(list_, sum_):
+    result = set(tuple())
+    visited = set()
+    for number in list_:
+        if number not in visited:
+            compliment = sum_ - number
+            if compliment in visited:
+                result.add((number, compliment))
+    return result
+
+
 # noinspection PyMethodMayBeStatic,PyPep8Naming, PyUnusedLocal
 class Solution:
 
