@@ -1,6 +1,6 @@
 import pytest
 
-from main.datastructures.linked_list_problems import *
+from main.datastructures.list.linkedlist.linked_list_problems import *
 
 NODE_DATA_LIST_EVEN_LENGTH = ['a', 'b', 'c', 'd', 'e', 'f']
 NODE_DATA_LIST_ODD_LENGTH = ['a', 'b', 'c', 'd', 'e']
