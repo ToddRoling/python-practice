@@ -1,6 +1,5 @@
 def get_array_sum(array: list[int]):
-    if not array:
-        return 0
+    # instead of just sum(array)
     sum_ = 0
     for integer in array:
         sum_ += integer
