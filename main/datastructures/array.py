@@ -8,8 +8,8 @@ def get_array_sum(array: list[int]):
 
 
 def two_sum(list_, sum_):
-    result = set()
     discovered = set()
+    result = set()
     for number in list_:
         discovered.add(number)
         compliment = sum_ - number
