@@ -12,6 +12,7 @@ def two_sum(list_, sum_):
     visited = set()
     for number in list_:
         if number not in visited:
+            visited.add(number)
             compliment = sum_ - number
             if compliment in visited:
                 result.add((number, compliment))
