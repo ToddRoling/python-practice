@@ -8,14 +8,14 @@ def get_array_sum(array: list[int]):
 
 
 def two_sum(list_, sum_):
-    result = set(tuple())
-    visited = set()
+    result = set()
+    discovered = set()
     for number in list_:
-        if number not in visited:
-            visited.add(number)
-            compliment = sum_ - number
-            if compliment in visited:
-                result.add((number, compliment))
+        discovered.add(number)
+        compliment = sum_ - number
+        if compliment in discovered:
+            ordered_pair = (number, compliment) if number <= compliment else (compliment, number)
+            result.add(ordered_pair)
     return result
 
 
