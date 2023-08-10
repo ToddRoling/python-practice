@@ -111,7 +111,7 @@ class Solution:
         pivot_index = _find_pivot_index()
 
         # determine if key exists in subarray to left or right of pivot index and reset indices accordingly
-        if array[pivot_index] <= key <= array[right_index]:
+        if array[pivot_index] <= key <= array[h]:
             left_index = pivot_index
             right_index = h
         else:
