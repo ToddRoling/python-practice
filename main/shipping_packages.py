@@ -25,3 +25,5 @@ def minimal_number_of_packages(item_count, available_large_packages, available_s
         return -1
     return large_package_count + small_package_count
 
+# comment
+
