@@ -1,1 +1,1 @@
-# python-interview-preparation
+# practice and sample python code
