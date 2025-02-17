@@ -13,7 +13,9 @@ def two_sum(list_, sum_):
         discovered.add(number)
         compliment = sum_ - number
         if compliment in discovered:
-            ordered_pair = (number, compliment) if number <= compliment else (compliment, number)
+            ordered_pair = (
+                (number, compliment) if number <= compliment else (compliment, number)
+            )
             result.add(ordered_pair)
     return result
 
@@ -88,6 +90,22 @@ class Solution:
 
         return arr
 
+    # https://practice.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-space1004/1/
+    def rotateMatrix(self, arr, n):
+        max_index = n - 1
+        for row_index in range(max_index):
+            for col_index in range(row_index, max_index - row_index):
+                temp = arr[row_index][col_index]
+                arr[row_index][col_index] = arr[col_index][max_index - row_index]
+                arr[col_index][max_index - row_index] = arr[max_index - row_index][
+                    max_index - col_index
+                ]
+                arr[max_index - row_index][max_index - col_index] = arr[
+                    max_index - col_index
+                ][row_index]
+                arr[max_index - col_index][row_index] = temp
+        return arr
+
     # My solution for https://practice.geeksforgeeks.org/problems/search-in-a-rotated-array4618/1
     def search(self, A: list, l: int, h: int, key: int):
         # rename variables from problem for clarity and later reinitialization
@@ -95,7 +113,11 @@ class Solution:
         left_index = l
         right_index = h
 
-        if not array or (left_index < 0 or right_index < 0) or (right_index < left_index):
+        if (
+            not array
+            or (left_index < 0 or right_index < 0)
+            or (right_index < left_index)
+        ):
             return -1
 
         def _find_pivot_index():
@@ -131,17 +153,17 @@ class Solution:
 
         return -1
 
-    # https://practice.geeksforgeeks.org/problems/rotate-a-2d-array-without-using-extra-space1004/1/
-    def rotateMatrix(self, arr, n):
-        max_index = n - 1
-        for row_index in range(max_index):
-            for col_index in range(row_index, max_index - row_index):
-                temp = arr[row_index][col_index]
-                arr[row_index][col_index] = arr[col_index][max_index - row_index]
-                arr[col_index][max_index - row_index] = arr[max_index - row_index][max_index - col_index]
-                arr[max_index - row_index][max_index - col_index] = arr[max_index - col_index][row_index]
-                arr[max_index - col_index][row_index] = temp
-        return arr
+    # My solution to https://leetcode.com/problems/two-sum
+    def twoSum(self, nums, target):
+        discovered = dict()
+        result = list()
+        for index, num in enumerate(nums):
+            complement = target - num
+            if complement in discovered:
+                return [discovered[complement], index]
+            else:
+                discovered[num] = index
+        return result
 
     # My solution to https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
     def zigZag(self, arr, n):
@@ -153,7 +175,12 @@ class Solution:
         less_than = True
 
         for index in range(n - 1):
-            if less_than and arr[index] > arr[index + 1] or not less_than and arr[index] < arr[index + 1]:
+            if (
+                less_than
+                and arr[index] > arr[index + 1]
+                or not less_than
+                and arr[index] < arr[index + 1]
+            ):
                 arr[index], arr[index + 1] = arr[index + 1], arr[index]
             less_than = not less_than
 
