@@ -23,3 +23,15 @@ class Solution:
             if v in set_b:
                 result.append((u, v))
         return result
+    
+    # My solution to https://leetcode.com/problems/two-sum
+    def twoSum(self, nums, target):
+        discovered = dict()
+        result = list()
+        for index, num in enumerate(nums):
+            complement = target - num
+            if complement in discovered:
+                return [discovered[complement], index]
+            else:
+                discovered[num] = index
+        return result

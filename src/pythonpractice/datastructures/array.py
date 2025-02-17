@@ -6,20 +6,6 @@ def get_array_sum(array: list[int]):
     return sum_
 
 
-def two_sum(list_, sum_):
-    discovered = set()
-    result = set()
-    for number in list_:
-        discovered.add(number)
-        compliment = sum_ - number
-        if compliment in discovered:
-            ordered_pair = (
-                (number, compliment) if number <= compliment else (compliment, number)
-            )
-            result.add(ordered_pair)
-    return result
-
-
 # noinspection PyMethodMayBeStatic,PyPep8Naming, PyUnusedLocal
 class Solution:
 
@@ -152,18 +138,6 @@ class Solution:
                 right_index = middle_index - 1
 
         return -1
-
-    # My solution to https://leetcode.com/problems/two-sum
-    def twoSum(self, nums, target):
-        discovered = dict()
-        result = list()
-        for index, num in enumerate(nums):
-            complement = target - num
-            if complement in discovered:
-                return [discovered[complement], index]
-            else:
-                discovered[num] = index
-        return result
 
     # My solution to https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1
     def zigZag(self, arr, n):
