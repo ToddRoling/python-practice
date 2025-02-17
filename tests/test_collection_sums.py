@@ -1,4 +1,4 @@
-from main.math.collection_sums import *
+from src.pythonpractice.math.collection_sums import *
 
 solution = Solution()
 

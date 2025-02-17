@@ -1,6 +1,6 @@
 import pytest
 
-from main.math.fibonacci import *
+from src.pythonpractice.math.fibonacci import *
 
 TEST_DATA_NTH_SEQUENCE = (
     (0, []),

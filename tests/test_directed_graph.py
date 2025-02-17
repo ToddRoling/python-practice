@@ -1,6 +1,6 @@
 import pytest
 
-from main.datastructures.graph.directed_graph import *
+from src.pythonpractice.datastructures.graph.directed_graph import *
 
 DIRECTED_INDEX_NODE_GRAPH_TEST_DATA = [
     ([[1], [2], [3], [3]], True),

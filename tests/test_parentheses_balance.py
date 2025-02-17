@@ -1,6 +1,6 @@
 import pytest
 
-from main.parentheses_balance import Solution
+from src.pythonpractice.parentheses_balance import Solution
 
 solution = Solution()
 

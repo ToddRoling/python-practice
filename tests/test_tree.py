@@ -1,4 +1,4 @@
-from main.datastructures.graph.tree import Solution, minimum_depth_recursive, Node
+from src.pythonpractice.datastructures.graph.tree import Solution, minimum_depth_recursive, Node
 
 solution = Solution()
 

@@ -1,4 +1,4 @@
-from main.badge_log_violations import get_badge_log_violations
+from src.pythonpractice.badge_log_violations import get_badge_log_violations
 
 
 def test_get_badge_log_violations_0():

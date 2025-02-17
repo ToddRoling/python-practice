@@ -1,4 +1,4 @@
-from main.strings.longest_common_prefix import Solution
+from src.pythonpractice.strings.longest_common_prefix import Solution
 
 solution = Solution()
 

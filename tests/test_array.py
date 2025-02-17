@@ -1,6 +1,6 @@
 import pytest
 
-from main.datastructures.array import Solution
+from src.pythonpractice.datastructures.array import Solution
 
 solution = Solution()
 

@@ -1,4 +1,4 @@
-from main.shipping_packages import minimal_number_of_packages
+from src.pythonpractice.shipping_packages import minimal_number_of_packages
 
 
 def test_minimal_number_of_packages():

@@ -1,4 +1,4 @@
-from main.datastructures.graph.undirected_graph import *
+from src.pythonpractice.datastructures.graph.undirected_graph import *
 
 UNDIRECTED_CHARACTER_NODE_GRAPH = {
     'A': ['B', 'D'],
