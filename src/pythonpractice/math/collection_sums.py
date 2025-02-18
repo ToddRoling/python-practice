@@ -1,11 +1,5 @@
 from pythonpractice.datastructures.list.linkedlist import ListNode
 
-# Define ListNode locally to resolve the error
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
 def two_sum(list_, target_sum):
     discovered = set()
     result = set()
